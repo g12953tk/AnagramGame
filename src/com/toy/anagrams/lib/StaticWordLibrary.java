@@ -37,6 +37,7 @@ package com.toy.anagrams.lib;
 final class StaticWordLibrary extends WordLibrary {
 
     private static final String[] WORD_LIST = {
+        " ",
         "happy",
         "lucky",
         "love",
@@ -85,6 +86,7 @@ final class StaticWordLibrary extends WordLibrary {
         "unsigned",
         "traditional"};
 
+    /*
     private static final String[] SCRAMBLED_WORD_LIST = {
         "yphap",
         "kuycl",
@@ -133,7 +135,7 @@ final class StaticWordLibrary extends WordLibrary {
         "evtrxe",
         "nuisngde",
         "rtdatioialn"
-    };
+    };*/
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
 
@@ -157,9 +159,9 @@ final class StaticWordLibrary extends WordLibrary {
      * @param idx index of required word
      * @return word at that index in its scrambled form
      */
-    public String getScrambledWord(int idx) {
+   /* public String getScrambledWord(int idx) {
         return SCRAMBLED_WORD_LIST[idx];
-    }
+    }*/
 
     /**
      * Gets the number of words in the library.

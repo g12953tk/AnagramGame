@@ -35,6 +35,10 @@ import com.toy.anagrams.lib.WordLibrary;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -84,7 +88,7 @@ public class Anagrams extends JFrame {
         
         initComponents();
         getRootPane().setDefaultButton(guessButton);
-        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
+        //scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
         pack();
         guessedWord.requestFocusInWindow();
         // Center in the screen
@@ -254,16 +258,40 @@ public class Anagrams extends JFrame {
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void nextTrialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTrialActionPerformed
-        wordIdx = (wordIdx + 1) % wordLibrary.getSize();
+        
+        wordIdx = (wordIdx +1) % wordLibrary.getSize();
 
-        feedbackLabel.setText(" ");
-        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
+        feedbackLabel.setText(" ");   
+        
+        String x=wordLibrary.getWord(wordIdx);
+        String p=Shuffle(x);
+        
+        scrambledWord.setText(p);
+        //scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
         guessedWord.setText("");
         getRootPane().setDefaultButton(guessButton);
 
         guessedWord.requestFocusInWindow();
     }//GEN-LAST:event_nextTrialActionPerformed
 
+    private String Shuffle (String x){
+        char[]c=x.toCharArray(); 
+        char y;
+        int len,left,right;
+        len=x.length();
+        Random rn=new Random();
+        for(int i=0;i<len*len;i++){
+            left=rn.nextInt(len);
+            right=rn.nextInt(len);
+            y=c[left];
+            c[left]=c[right];
+            c[right]=y;
+        }
+        return new String(c);
+    }
+    
+    
+    
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
